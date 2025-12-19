@@ -1,96 +1,98 @@
-# Employee Absenteeism Analysis  
-## Multidimensional Modeling (Star Schema)
+# Employee Earnings, Absences, Performance & Retention Analysis  
+## SQL Server | Multidimensional Modeling (Star Schema)
 
-This project focuses on designing and implementing a **multidimensional data model** to analyze employee absenteeism patterns.  
-A **star schema** was developed to support analytical queries related to absence frequency, duration, and contributing factors.
+This project implements a complete **SQL-based analytical workflow** to evaluate employee earnings, absenteeism, departmental performance, and retention trends. The solution was developed entirely in **SQL Server Management Studio (SSMS)**, transforming raw flat files into a structured, analytical database using **normalization and star schema design**.
+
+The project demonstrates how database-driven analytics can support workforce planning and organizational decision-making without the use of external BI tools.
 
 ---
 
 ## Project Objective
 
-To transform employee absenteeism data into an **analytical schema** that enables efficient reporting and trend analysis using fact and dimension tables.
+To design, implement, and analyze a relational database that enables multi-dimensional analysis of:
+- Employee absences
+- Earnings performance
+- Department-level productivity
+- Retention and turnover patterns
+
+All data preparation, modeling, and analysis were executed using SQL.
+
+---
+
+## Data Sources
+
+- City Employee Earnings dataset (City of Philadelphia)
+- UCI Absenteeism at Work dataset
+
+The datasets were combined for demonstration purposes to simulate a real-world organizational scenario involving earnings, attendance, and retention.
 
 ---
 
 ## Data Modeling Approach
 
-The database follows a **star schema design**, consisting of:
-
-- One central **fact table** capturing absenteeism measures
-- Multiple **dimension tables** providing descriptive context
-
-This design supports:
-- Fast aggregations
-- Simplified analytical queries
-- BI and reporting use cases
-
----
-
-## Schema Overview
+The database design follows a **star-schema-style analytical model**, optimized for reporting and aggregation.
 
 ### Fact Table
-**Fact_EmployeeAbsenteeism**
-- Stores quantitative measures related to absenteeism
-- References all dimension tables using foreign keys
-- Designed for aggregation and trend analysis
+**Earnings**
+- Stores measurable payroll components
+- Links employee, department, job, calendar, and absence data
+- Serves as the central table for analytical queries
 
-Typical measures include:
-- Absence duration
-- Absence frequency
+Key measures include:
+- Base gross pay
+- Overtime gross pay
+- Longevity and miscellaneous pay
+- Absence-related earnings impact
 
 ---
 
 ### Dimension Tables
-The schema includes dimensions such as:
-- Employee
-- Date / Time
-- Reason for Absence
-- Department (if applicable)
+- **Employee** – employee attributes, category, and termination details
+- **Department** – department identifiers and names
+- **Job** – job title, salary type, and base salary
+- **Calendar** – year, quarter, month, season, and day attributes
+- **Absence** – absence reasons and descriptions
 
-Each dimension contains descriptive attributes used for filtering, grouping, and slicing data.
-
----
-
-## Key Concepts Demonstrated
-
-- Star schema design
-- Fact vs dimension modeling
-- Surrogate keys
-- Referential integrity
-- Analytical (OLAP) vs operational (OLTP) design principles
+This structure supports slicing and aggregation across time, departments, and employee groups.
 
 ---
 
-## Technologies Used
+## Normalization Strategy
 
-- SQL Server
-- T-SQL
-- ERD / schema modeling tools
+The original flat file was normalized to **Third Normal Form (3NF)** prior to analytical modeling:
 
----
+- Atomic values enforced (1NF)
+- Partial dependencies removed (2NF)
+- Transitive dependencies eliminated (3NF)
 
-
----
-
-## Use Cases
-
-- Identify absenteeism trends over time
-- Analyze absence patterns by employee or department
-- Support HR decision-making using structured analytical data
+Normalization improved data quality, reduced redundancy, and ensured referential integrity before analytical processing.
 
 ---
 
-## Contribution Note
+## Key SQL Features Implemented
 
-This project was completed as part of an academic assignment.  
-My primary responsibilities included:
-- Designing the star schema
-- Creating fact and dimension tables
-- Implementing foreign key relationships
-- Preparing schema documentation
+- Primary and foreign key constraints
+- UNIQUE, CHECK, and DEFAULT constraints
+- Aggregations and GROUP BY analysis
+- JOINs across fact and dimension tables
+- Window functions (DENSE_RANK)
+- Common Table Expressions (CTEs)
+- Stored procedures for payroll calculations
+- Triggers for automated payroll adjustments
+- Non-clustered indexing for performance optimization
 
 ---
 
-This project demonstrates applied data warehousing and multidimensional modeling concepts.
+## Analytical Use Cases
 
+- Identifying employees with the highest absenteeism
+- Evaluating seasonal absence patterns
+- Analyzing the relationship between absences and earnings
+- Comparing departmental performance
+- Assessing retention and turnover trends
+- Ranking employees by absence behavior within departments
+
+---
+
+## Repository Structure
 
