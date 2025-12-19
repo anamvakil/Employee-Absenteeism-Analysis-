@@ -69,5 +69,28 @@ Each dimension contains descriptive attributes used for filtering, grouping, and
 
 ---
 
-## Repository Structure
+
+---
+
+## Use Cases
+
+- Identify absenteeism trends over time
+- Analyze absence patterns by employee or department
+- Support HR decision-making using structured analytical data
+
+---
+
+## Contribution Note
+
+This project was completed as part of an academic assignment.  
+My primary responsibilities included:
+- Designing the star schema
+- Creating fact and dimension tables
+- Implementing foreign key relationships
+- Preparing schema documentation
+
+---
+
+This project demonstrates applied data warehousing and multidimensional modeling concepts.
+
 
